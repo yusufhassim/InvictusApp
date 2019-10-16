@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="erp">
+    <ion-title  >WRITE OFF STOCK</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+
+  <div style="padding: 2%;"> </div>
+  <!-- New Beginnings 2019 -->
+
+  <ion-list>
+    <ion-item>
+       <ion-select placeholder="Select One" name="viewValue" #viewValue="ngModel" [(ngModel)]="obj.ProductID" class="form-control" (ionChange)="addProduct(viewValue.value)">
+          <ion-select-option *ngFor="let product of Products" value="{{product.value}}">{{product.viewValue}}</ion-select-option>
+      </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <!-- <div class="form-group">
+      <label>Product Name</label>
+        <select name="viewValue" #viewValue="ngModel" [(ngModel)]="obj.ProductID" class="form-control" (change)="addProduct($event.target)">
+          <option value="0">-- Select --</option>
+          <option *ngFor="let product of Products" value="{{product.value}}">{{product.viewValue}}</option>
+        </select>
+    </div> -->
+
+  <div style="padding: 1%;"> </div>
+
+  <ion-item>
+    <ion-label position="floating">Quantity</ion-label>
+    <ion-input  name="WriteOffStockUnits" #WriteOffStockUnits="ngModel" [(ngModel)]="obj.WriteOffStockUnits" (ngModelChange)="obj.WriteOffStockUnits = $event" class="form-control"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="floating">Reason</ion-label>
+      <ion-input  name="WriteOffStockReason" #WriteOffStockReason="ngModel" [(ngModel)]="obj.WriteOffStockReason" (ngModelChange)="obj.WriteOffStockReason = $event" class="form-control"></ion-input>
+    </ion-item>
+
+ 
+  <div style="padding: 1%;"> </div>
+
+  <!-- <table >
+    <tr>
+      <td>
+        <div style="text-align:center">
+          <div>
+            <webcam height="150" width="150" (imageCapture)="handleImage($event)" trigger="triggerObservable">
+            </webcam>
+            <br />
+          </div>
+          <div style="padding: 1%"></div>
+        </div>
+      </td>
+      <td>
+        <div class="snapshot" *ngIf="webcamImage">
+          <img [src]="webcamImage.imageAsDataUrl" />
+        </div>
+      </td>
+    </tr>
+  </table> -->
+
+  
+  <table>
+      <tr>
+        <td>
+          <div style="text-align:center">
+            <div>
+              <webcam [height]="150" [width]="150" [trigger]="triggerObservable"
+                (imageCapture)="handleImage($event)">
+              </webcam>
+              <br />
+              <!-- <button class="WOSphoto" id="snapshotBtn" (click)="triggerSnapshot();">Take A Snapshot</button> -->
+            </div>
+            <div style="padding: 1%"></div>
+          </div>
+        </td>
+        <td>
+          <div class="snapshot" *ngIf="webcamImage">
+            <img [src]="webcamImage.imageAsDataUrl" />
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div style="padding: 1%; text-align: center"> 
+      <ion-button expand="full" size="large" color="primary" id="snapshotBtn" (click)="triggerSnapshot();" mat-raised-button>Take A
+        Snapshot
+      </ion-button>       
+      <ion-button expand="full" size="large" color="erp" (click)="WriteOffSubmit()" type="submit">
+        Write Off
+      </ion-button>
+
+      <ion-button expand="full" size="large" color="erp" type="button" (click)="OpenAllWriteOffPage()">
+        Cancel
+      </ion-button>
+    </div>
+
+
+
+</ion-content>

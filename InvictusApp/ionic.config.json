@@ -1,0 +1,7 @@
+{
+  "name": "InvictusApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

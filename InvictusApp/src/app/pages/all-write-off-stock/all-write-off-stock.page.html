@@ -1,0 +1,84 @@
+<ion-header>
+    <ion-toolbar color="erp">
+        <ion-title>Write Off Stock</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="s">
+    <!--<body class="s">-->
+    <div class="BodyPadding">
+
+        <!-- <h1 style="text-align: center">Product Write Off</h1> -->
+
+        <!-- Space between heading and Table -->
+        <div style="padding: 1%"></div>
+
+
+        <ion-searchbar (keyup)="applyFilter($event.target.value)" type="text" class="SearchInput"
+            placeholder="Search Write Off"></ion-searchbar>
+        <!-- Search -->
+        <!-- <input (keyup)="applyFilter($event.target.value)" type="text" class="SearchInput"
+            placeholder="Search Write Off"> -->
+
+
+        <div style="padding: 1%"></div>
+        <!-- All Couriers Table -->
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <!-- Company Name Column -->
+            <ng-container matColumnDef="ProductName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+                <td mat-cell *matCellDef="let writeOff"> {{writeOff.ProductName}} </td>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="WriteOffStockUnits">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity Written Off </th>
+                <td mat-cell *matCellDef="let writeOff"> {{writeOff.WriteOffStockUnits}} </td>
+            </ng-container>
+
+            <!-- Contact Number Column -->
+            <ng-container matColumnDef="WriteOffDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Write Off </th>
+                <td mat-cell *matCellDef="let writeOff"> {{writeOff.WriteOffDate | date}} </td>
+            </ng-container>
+
+            <!-- Street Address Column -->
+            <ng-container matColumnDef="WriteOffStockReason">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Write Off Reason </th>
+                <td mat-cell *matCellDef="let writeOff"> {{writeOff.WriteOffStockReason}} </td>
+            </ng-container>
+
+
+
+
+            <!--Actions Column -->
+            <!-- <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions</th>
+                <td mat-cell *matCellDef="let writeOff">
+                    <mat-icon  title="Add Photo" aria-hidden="false" aria-label="Example home icon"
+                        style="padding-left: 5%; padding-right: 5%;  cursor: pointer" (click)="openwriteoffImage(writeOff.WriteOffStockID)">add_a_photo</mat-icon>
+                </td>
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
+        <br>
+        <br>
+        <!-- Space between Table and CRUD buttons -->
+        <div style="padding: 0.5%"></div>
+
+        <!-- Add/Update/Remove Courier Button -->
+       
+                    <ion-button expand="full" size="large" color="primary" (click)="OpenAddWriteOffPage()"
+                        class="CrudButton" mat-raised-button>Add Write Off</ion-button>
+        
+
+    </div>
+
+    <!-- Space After CRUD buttons -->
+    <!-- <div style="padding: 25%"></div> -->
+    <!--</body>-->
+</ion-content>
